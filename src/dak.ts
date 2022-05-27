@@ -25,7 +25,10 @@ export async function engine(
       console.error(`${task} requires ${argsNum} arguments`);
       Deno.exit(1);
     }
-    await taskFn(...args);
+    const ret = taskFn(...args);
+    if (ret instanceof Promise) {
+      await ret;
+    }
     i += argsNum;
   }
 }
