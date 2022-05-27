@@ -1,6 +1,5 @@
 export async function engine(
-  // deno-lint-ignore no-explicit-any
-  tasks: any,
+  tasks: { [task: string]: (...args: string[]) => void | Promise<void> },
   options?: { defaultTask: string },
 ) {
   if (Deno.args.length === 0) {
