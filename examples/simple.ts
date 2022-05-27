@@ -1,4 +1,4 @@
-import { engine } from "./src/dak.ts";
+import { engine } from "../src/dak.ts";
 
 const tasks = {
   record(url: string) {
