@@ -1,4 +1,5 @@
-export function engine(tasks) {
+// deno-lint-ignore no-explicit-any
+export async function engine(tasks: any) {
   for (let i = 0; i < Deno.args.length; i++) {
     const task = Deno.args[i];
     const taskFn = tasks[task];
@@ -8,7 +9,7 @@ export function engine(tasks) {
       console.error(`${task} requires ${argsNum} arguments`);
       Deno.exit(1);
     }
-    taskFn(...args);
+    await taskFn(...args);
     i += argsNum;
   }
 }

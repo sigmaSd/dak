@@ -8,5 +8,20 @@ const tasks = {
     const res = parseInt(a) + parseInt(b);
     console.log(`${a} + ${b} = ${res}`);
   },
+  async sing(song: string) {
+    console.log(`Singing ${song}`);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log(`Done singing ${song}`);
+  },
+  help() {
+    console.log(`
+    record <url>
+    add <a> <b>
+    sing <song>
+    help
+    `);
+  },
+  "-h": () => tasks.help(),
 };
-engine(tasks);
+
+await engine(tasks);
